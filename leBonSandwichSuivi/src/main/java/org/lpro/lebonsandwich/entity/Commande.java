@@ -12,21 +12,21 @@ import javax.persistence.OneToMany;
  *
  * @author dufour76u
  */
-public class Categorie {
+public class Commande {
 
     @Id
     private String id;
     private String nom;
     private String description;
 
-    @OneToMany(mappedBy="categorie", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Sandwich> sandwichs;
+    @OneToMany(mappedBy="commande", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Item> items;
     
-    Categorie() {
+    Commande() {
         // necessaire pour JPA !!!!
     }
     
-    public Categorie (String nom, String description) {
+    public Commande (String nom, String description) {
         this.nom = nom;
         this.description = description;
     }
@@ -55,12 +55,12 @@ public class Categorie {
         this.description = description;
     }
     
-    public Set<Sandwich> getSandwichs() {
-        return this.sandwichs;
+    public Set<Item> getitems() {
+        return this.items;
     }
 
-    public void setProjets(Set<Sandwich> sandwichs) {
-        this.sandwichs = sandwichs;
+    public void setProjets(Set<Item> items) {
+        this.items = items;
     }
     
     
