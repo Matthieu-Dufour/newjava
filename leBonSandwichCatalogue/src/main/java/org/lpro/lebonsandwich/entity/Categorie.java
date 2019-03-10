@@ -59,7 +59,7 @@ public class Categorie {
         return this.sandwichs;
     }
 
-    public void setProjets(Set<Sandwich> sandwichs) {
+    public void setSandwichs(Set<Sandwich> sandwichs) {
         this.sandwichs = sandwichs;
     }
     

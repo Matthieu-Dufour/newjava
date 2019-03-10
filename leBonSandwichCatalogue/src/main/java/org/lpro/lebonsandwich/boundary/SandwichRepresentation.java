@@ -23,14 +23,13 @@ public class SandwichRepresentation {
     private final SandwichResource sr;
     private final CategorieResource cr;
 
-    // Injection de dépendances
     public SandwichRepresentation(SandwichResource sr, CategorieResource cr) {
         this.sr = sr;
         this.cr = cr;
     }
     
     @GetMapping("/categories/{id}/sandwichs")
-    public ResponseEntity<?> getSandwichByCategorieId(@PathVariable("id") String id)
+    public ResponseEntity<?> getSandwichsByCategorieId(@PathVariable("id") String id)
             throws NotFound {
         
         if (!cr.existsById(id)) {

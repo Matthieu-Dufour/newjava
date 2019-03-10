@@ -64,7 +64,8 @@ public class CategorieRepresentation {
                 .withSelfRel();
         if (collection) {
         Link collectionLink = linkTo(CategorieRepresentation.class).withRel("collection");
-        return new Resource<>(categorie, selfLink, collectionLink);
+        Link sandwichsLink = linkTo(CategorieRepresentation.class).slash(categorie.getId()).slash("sandwichs").withRel("sandwichs");
+        return new Resource<>(categorie, selfLink, collectionLink,sandwichsLink);
     } else {
             return new Resource<>(categorie, selfLink);
         }
@@ -77,11 +78,11 @@ public class CategorieRepresentation {
         return Optional.ofNullable(cr.findById(id))
                 .filter(Optional::isPresent)
                 .map(categorie -> new ResponseEntity<>(categorieToResource(categorie.get(),false), HttpStatus.OK))
-                .orElseThrow(() -> new NotFound("Categorie inexsitant"));
+                .orElseThrow(() -> new NotFound("Categorie inexsitante"));
     }
 
     @GetMapping("/{id}/sandwichs")
-    public ResponseEntity<?> getProjetByCategorieId(@PathVariable("id") String id)
+    public ResponseEntity<?> getSandwichByCategorieId(@PathVariable("id") String id)
             throws NotFound {
         if (!cr.existsById(id)) {
             throw new NotFound("Categorie inexistante");
